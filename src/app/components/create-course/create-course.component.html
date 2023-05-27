@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input type="text" class="border w-full py-2 px-4 mb-2" placeholder="Course name" formControlName="name" appFocus/>
+  <p class="text-red-600 font-medium mb-2" *ngIf="name.errors?.minlength && name.touched">
+    Please fill title field width min length. Now {{ name.value.length }}
+  </p>
+  <input type="text" class="border w-full py-2 px-4 mb-2" placeholder="Course description" formControlName="description" appFocus/>
+  <p class="text-red-600 font-medium mb-2" *ngIf="description.errors?.minlength && description.touched">
+    Please fill description field width min length. Now {{ description.value.description }}
+  </p>
+  <input type="text" class="border w-full py-2 px-4 mb-2" placeholder="Course tutor" formControlName="tutor" appFocus/>
+  <p class="text-red-600 font-medium mb-2" *ngIf="tutor.errors?.minlength && tutor.touched">
+    Please fill tutor field width min length. Now {{ tutor.value.length }}
+  </p>
+  <input type="number" class="border w-full py-2 px-4 mb-2" placeholder="Course duration" formControlName="duration" appFocus/>
+  <p class="text-red-600 font-medium mb-2" *ngIf="duration.errors?.minlength && duration.touched">
+    Please fill duration field width min length. Now {{ duration.value.length }}
+  </p>
+  <select class="border w-full py-2 px-4 mb-2" placeholder="Course duration unit" formControlName="duration_unit" appFocus>
+    <option value="hours" selected="selected">Hours</option>
+    <option value="lessons">Lessons</option>
+  </select>
+  <p class="text-red-600 font-medium mb-2" *ngIf="duration_unit.errors?.minlength && duration_unit.touched">
+    Please fill duration unit field width min length. Now {{ duration_unit.value.length }}
+  </p>
+  <button type="submit" class="py-2 px-4 bg-blue-600 text-white">Create</button>
+</form>

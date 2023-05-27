@@ -1,0 +1,23 @@
+<div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
+  <h2 class="mb-2 text-md text-center">{{ course.name }}</h2>
+  <p>Duration: <span class="font-bold">{{ course.duration }} {{ course.duration_unit }}</span></p>
+
+  <button class="border py-2 px-4 rounded" [ngClass]="{'bg-yellow-400': !details, 'bg-blue-400': details}" (click)="details = !details">
+    {{ details ? 'Hide' : 'Show' }} Details
+  </button>
+
+  <button class="border py-2 px-4 rounded" [ngClass]="{'bg-yellow-400': !areYouRegistered, 'bg-blue-400': areYouRegistered}"
+  (click)="areYouRegistered = !areYouRegistered; (!areYouRegistered) ? selectCourse() : deselectCourse()">
+    {{ areYouRegistered ? 'Cancel registration of' : 'Register' }} you
+  </button>
+
+
+
+  <div *ngIf="details">
+    <p>{{ course.id }}</p>
+    <p>{{ course.description }}</p>
+    <p>Tutor: <span [ngStyle]="{fontWeight: 'bold'}">
+      {{ course.tutor }}
+    </span></p>
+  </div>
+</div>

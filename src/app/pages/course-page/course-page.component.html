@@ -1,0 +1,16 @@
+<h1 class="font-bold mb-2 text-center text-lg">{{ name }}</h1>
+
+<input type="text" class="mb-2 border py-2 px-4 w-full" placeholder="Filter courses..." [(ngModel)]="term">
+<input type="checkbox" (change)="showFilteredOnly = !showFilteredOnly"/><label>Show only courses you are registered on</label>
+
+<div *ngIf="coursesService.courses">
+  <app-course *ngFor="let course of coursesService.courses | filterCourses:term | selectedCourses:showFilteredOnly let i = index" [course]="course">
+  </app-course>
+</div>
+
+
+<app-modal *ngIf="modalService.isVisible$ | async" title="Create new Course">
+  <app-create-course></app-create-course>
+</app-modal>
+
+<button class="rounded-full bg-red-700 text-white fixed right-5 bottom-5 py-2 px-4" (click)="modalService.open()">+</button>
